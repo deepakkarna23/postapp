@@ -1,5 +1,9 @@
 class PostsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create]
+  before_action :authenticate_with_http_digest, only: [:new, :create]
+
+  def index
+    @posts = Post.all.order('created_at DESC')
+  end
 
   def new
     @post = Post.new
@@ -11,6 +15,20 @@ class PostsController < ApplicationController
       redirect_to root_path
     else
       render :new, status: :unprocessable_entity
+    end
+  end
+
+  def edit
+    @post = Post.find(params[:id])
+  end
+
+  def update
+    @post = Post.find(params[:id])
+    @post.update(post_params)
+    if @post.valid?
+      redirect_to root_path
+    else
+      render :edit, status: :unprocessable_entity
     end
   end
 

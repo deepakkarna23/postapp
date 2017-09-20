@@ -1,1 +1,8 @@
-<h1>Hello</h1>
+<% @posts.each do |post| %>
+  <%= post.user.name %>
+  <%= post.title %>
+  <%= post.description %>
+  <% if post.user == logged_in? %>
+    <%= link_to 'Edit Post', edit_post_path(post.id) %>
+  <% end %>
+<% end %>
