@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get 'logout', to: 'sessions#destroy', as: 'logout'
   get 'show', to: 'posts#show', as: 'show'
 
-  resources :users
+  resources :users, only: :show
   resources :sessions
   resources :posts do
       resources :comments

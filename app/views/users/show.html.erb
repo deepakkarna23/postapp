@@ -1,0 +1,8 @@
+<%= @user.name %>
+<%= @user.description %>
+
+<%= pluralize(@user.posts.count, 'post') %>
+
+<% @user.posts.each do |post| %>
+    <%= post.description %>
+<% end %>
