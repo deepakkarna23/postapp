@@ -1,6 +1,6 @@
-  <%= @post.user.email %>
+  <%= @post.user.name %>
   <%= @post.description %>
-  <% if @post.user == logged_in %>
+  <% if @post.user == logged_in? %>
     <%= link_to 'Edit Post', edit_post_path(@post.id) %>
     <%= link_to 'Delete Post', post_path(@post.id), method: :delete %>
   <% end %>

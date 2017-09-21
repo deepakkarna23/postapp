@@ -11,7 +11,7 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = logged_in.posts.create(post_params)
+    @post = logged_in?.posts.create(post_params)
     if @post.valid?
       redirect_to root_path
     else
@@ -51,12 +51,7 @@ class PostsController < ApplicationController
   end
 
   def is_owner?
-    redirect_to root_path if Post.find(params[:id]).user != logged_in
+    redirect_to root_path if Post.find(params[:id]).user != logged_in?
   end
 
-  def logged_in
-    @logged_in ||= User.find(session[:user_id]) if session[:user_id]
-  end
-
-  helper_method :logged_in
 end
