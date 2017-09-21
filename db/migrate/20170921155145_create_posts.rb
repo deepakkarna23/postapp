@@ -3,6 +3,7 @@ class CreatePosts < ActiveRecord::Migration[5.1]
     create_table :posts do |t|
       t.integer :user_id
       t.text :description
+
       t.timestamps null: false
     end
     add_index :posts, :user_id

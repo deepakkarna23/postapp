@@ -1,0 +1,21 @@
+<div id="wrap">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="/">PostApp</a>
+  </div>
+  <div id="user_header">
+    <% if logged_in %>
+      User:<%= logged_in.email %>
+      <%= link_to 'New Post', new_post_path %>
+      <%= link_to 'Logout', logout_path %>
+    <% else %>
+      <%= link_to "Sign Up", signup_path %>
+      <%= link_to "Log In", login_path %>
+    <% end %>
+  </div>
+</div><!-- wrap -->

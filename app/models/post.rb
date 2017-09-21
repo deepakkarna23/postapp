@@ -1,5 +1,6 @@
 class Post < ActiveRecord::Base
   belongs_to :user
 
-  validates :title, :description, :user_id, presence: true
+  attr_accessor :user_id, :description
+  validates :description, :user_id, presence: true
 end
