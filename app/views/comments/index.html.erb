@@ -1,0 +1,15 @@
+<% @posts.each do |post| %>
+  <%= post.user.name %>
+  <%= post.description %>
+  <% if post.user == logged_in? %>
+    <%= link_to 'Edit Post', edit_post_path(post.id) %>
+  <% end %>
+
+  <% if logged_in? %>
+    <%= simple_form_for Comment.new, url: post_comments_path(post), method: :post do |f| %>
+      <%= f.input :text, label: 'Comment', placeholder: 'Add a comment...'  %>
+      <%= f.submit 'Post', class: 'btn btn-primary btn-block' %>
+    <% end %>
+  <% end %>
+
+<% end %>
