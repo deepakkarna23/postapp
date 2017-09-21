@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   before_action :authenticate_with_http_digest, only: [:new, :create]
+  before_action :is_owner?, only: [:edit, :update, :destroy]
 
   def index
     @posts = Post.all.order('created_at DESC')
@@ -32,9 +33,23 @@ class PostsController < ApplicationController
     end
   end
 
+  def destroy
+    @post = Post.find(params[:id])
+    @post.destroy
+    redirect_to root_path
+  end
+
+  def show
+    @post = Post.find(params[:id])
+  end
+
   private
 
   def post_params
-    params.require(:post).permit(:user_id, :photo, :description)
+    params.require(:post).permit(:user_id, :title, :description)
+  end
+
+  def is_owner?
+    redirect_to root_path if Post.find(params[:id]).user != logged_in?
   end
 end
