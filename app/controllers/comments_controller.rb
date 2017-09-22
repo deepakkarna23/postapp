@@ -1,10 +1,10 @@
 class CommentsController < ApplicationController
-  before_action :authenticate_user!, only: :create
+  before_action :authenticate_with_http_digest, only: :create
   before_action :is_owner?, only: :destroy
 
   def create
     @post = Post.find(params[:post_id])
-    @comment = @post.comments.create(comment_params.merge(user_id: current_user.id))
+    @comment = @post.comments.create(comment_params.merge(user_id: logged_in?.id))
     if @comment.valid?
       redirect_to root_path
     else

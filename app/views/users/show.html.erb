@@ -1,8 +1,20 @@
-<%= @user.name %>
-<%= @user.description %>
+<div class="prof_header">
 
-<%= pluralize(@user.posts.count, 'post') %>
+  <div class="row">
+    <div class="col-xs-4">
+      <%= @user.name %>
+    </div>
+    <%= @user.description %>
 
-<% @user.posts.each do |post| %>
-    <%= post.description %>
-<% end %>
+    <span class="count"><%= @user.posts.count %></span> posts
+
+<div class="prof_post_box">
+  <div class="row">
+
+    <% @user.posts.each do |post| %>
+      <div class="col-xs-6">
+        <%= post.description %>
+      </div>
+    <% end %>
+  </div>
+</div>

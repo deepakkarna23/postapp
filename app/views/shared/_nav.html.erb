@@ -12,7 +12,6 @@
   <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
         <% if logged_in? %>
-          <li><%= logged_in?.email %></li>
           <li><%= link_to 'New Post', new_post_path %></li>
           <li><%= link_to 'Logout', logout_path %></li>
         <% else %>
@@ -21,4 +20,7 @@
         <% end %>
     </ul>
   </div>
+</div>
+<div class="nav pull-right collapse navbar-collapse">
+  <h4>User: <%= logged_in?.email %></h4>
 </div>
