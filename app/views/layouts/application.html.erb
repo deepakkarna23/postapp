@@ -5,19 +5,28 @@
     <%= csrf_meta_tags %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <link href="https://fonts.googleapis.com/css?family=Dosis|Open+Sans:300,400,600,700" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="/app/assets/stylesheet/master.css">
+    <link href="https://fonts.googleapis.com/css?family=Audiowide|Ruda|Sedgwick+Ave+Display" rel="stylesheet">
   </head>
 
   <body>
-  <div id="wrap">
-    <%= render 'shared/nav' %>
+  <div id = "wrap">
+    <%= render 'shared/nav' %><!--Navbar-->
+    <br>
 
     <div class = "container">
-      <%= yield %>
+      <div class = "row">
+        <div class = "col-xs-12 col-md-10 col-md-offset-1">
+          <%= render 'shared/flash_messages' %>
+          <%= yield %>
+        </div>
+      </div>
     </div>
-  </div><!-- wrap -->
 
-  <%= render 'shared/foot' %>
+  </div><!-- Wrap -->
+
+  <%= render 'shared/foot' %><!--Footer-->
 
   </body>
 </html>

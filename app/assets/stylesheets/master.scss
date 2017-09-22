@@ -1,22 +1,33 @@
-$primary-font: 'Open Sans', sans-serif;
-$secondary-font: 'Dosis', sans-serif;
+$primary-font: 'Audiowide', cursive;
+$secondary-font: 'Ruda', sans-serif;
 $main-blue: #337ab7;
 $footer-height: 45px;
 
 .navbar-default {
-  font-family: $secondary-font;
+  font-family: $primary-font;
   background-color: white;
 }
 
 html, body {
-  font-family: $primary-font;
+  font-family: $secondary-font;
 }
 
 .navbar-default .navbar-brand {
   font-weight: 100;
   font-size: 30px;
   letter-spacing: 2px;
-  color: $main-blue;
+  color: white;
+}
+
+.navbar-default{
+  background-color: $main-blue;
+  color:white;
+}
+
+.collapse{
+  padding: 10px;
+  padding-right: 10px;
+  color: white;
 }
 
 
@@ -44,4 +55,7 @@ body {
 /* Set the fixed height of the footer here */
 .footer {
   height: $footer-height;
+  background: grey;
+  padding: 10px;
+  color: white;
 }

@@ -1,4 +1,4 @@
-<div id="wrap">
+<div class="navbar-default">
   <div class="navbar-header">
     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
       <span class="sr-only">Toggle navigation</span>
@@ -6,16 +6,19 @@
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
     </button>
-    <a class="navbar-brand" href="/">PostApp</a>
+    <a class="navbar-brand" href="/"><i class="fa fa-pencil" aria-hidden="true">PostApp</i></a>
   </div>
-  <div id="user_header">
-    <% if logged_in? %>
-      <%= logged_in?.email %>
-      <%= link_to 'New Post', new_post_path %>
-      <%= link_to 'Logout', logout_path %>
-    <% else %>
-      <%= link_to "Sign Up", signup_path %>
-      <%= link_to "Log In", login_path %>
-    <% end %>
+
+  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+        <% if logged_in? %>
+          <li><%= logged_in?.email %></li>
+          <li><%= link_to 'New Post', new_post_path %></li>
+          <li><%= link_to 'Logout', logout_path %></li>
+        <% else %>
+          <li><%= link_to "Sign Up", signup_path %></li>
+          <li><%= link_to "Log In", login_path %></li>
+        <% end %>
+    </ul>
   </div>
-</div><!-- wrap -->
+</div>
