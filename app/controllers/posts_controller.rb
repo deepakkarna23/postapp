@@ -3,7 +3,7 @@ class PostsController < ApplicationController
   before_action :is_owner?, only: [:edit, :update, :destroy]
 
   def index
-    @posts = Post.all.order('created_at DESC')
+    @posts = Post.all.order('created_at DESC').includes(:user, comments: :user)
   end
 
   def new
@@ -45,12 +45,12 @@ class PostsController < ApplicationController
 
   private
 
-  def post_params
-    params.require(:post).permit(:user_id, :description)
-  end
-
   def is_owner?
     redirect_to root_path if Post.find(params[:id]).user != logged_in?
+  end
+
+  def post_params
+    params.require(:post).permit(:user_id, :description)
   end
 
 end
